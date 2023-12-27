@@ -20,6 +20,6 @@ def create_db_and_base ():
     SQLModel.metadata.create_all(engine)
 
 
-if __name__ == '__main':
+if __name__ == '__main__':
     create_db_and_base()
 
