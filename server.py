@@ -1,4 +1,6 @@
 from datetime import date, datetime
+from fastapi import HTTPException
+from json import JSONDecodeError
 from typing import Sequence
 from currency_api import get_exchange_rate
 
@@ -12,7 +14,11 @@ app = FastAPI()
 
 @app.get("/fetch_rate")
 def fetch_rate(date_: date) -> dict:
-    return get_exchange_rate(date_)
+    try:
+        return get_exchange_rate(date_)
+
+    except JSONDecodeError as e:
+        raise HTTPException(404, {"Error": str(e)})
 
 
 @app.on_event("startup")

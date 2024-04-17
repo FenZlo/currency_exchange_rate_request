@@ -2,6 +2,8 @@ from json import JSONDecodeError
 from loguru import logger
 from datetime import date
 from calendar import monthrange
+
+from currency_api import get_exchange_rate
 from server import create_database, is_exchange_rate_on_date_exist, create_exchange_rate_on_date
 
 YEAR = 2023
