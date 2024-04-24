@@ -17,6 +17,8 @@ license = {text = "MIT"}
 requires = ["pdm-backend"]
 build-backend = "pdm.backend"
 
+[pytest]
+pythonpath = ["src"]
 
 [tool.pdm]
 distribution = true

@@ -2,12 +2,12 @@ from datetime import date, datetime
 from fastapi import HTTPException
 from json import JSONDecodeError
 from typing import Sequence
-from src.currency_api import get_exchange_rate
+from currency_api import get_exchange_rate
 
 from fastapi import FastAPI
 from sqlmodel import SQLModel, select, Session
 
-from src.data_base import CurrencyRate, engine
+from data_base import CurrencyRate, engine
 
 app = FastAPI()
 

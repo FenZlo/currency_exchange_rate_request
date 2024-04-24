@@ -1,5 +1,5 @@
 from datetime import date
-from main import get_datime_range
+from src.__main__ import get_datime_range
 
 
 def test_get_datime_range():

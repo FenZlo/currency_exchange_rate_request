@@ -1,4 +1,4 @@
-from main import g
+from __main__ import g
 from httpx import request
 from loguru import logger
 from datetime import date
