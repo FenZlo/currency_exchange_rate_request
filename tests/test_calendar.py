@@ -1,5 +1,6 @@
 from datetime import date
-from src.__main__ import get_datime_range
+
+from src.calendar_ import get_datime_range
 
 
 def test_get_datime_range():

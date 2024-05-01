@@ -1,13 +1,13 @@
-from datetime import date, datetime
-from fastapi import HTTPException
+from datetime import date
 from json import JSONDecodeError
 from typing import Sequence
-from currency_api import get_exchange_rate
 
-from fastapi import FastAPI
-from sqlmodel import SQLModel, select, Session
+from fastapi import FastAPI, HTTPException
+from sqlmodel import Session, SQLModel, select
 
-from data_base import CurrencyRate, engine
+from src.currency_api import get_exchange_rate
+from src.data_base import CurrencyRate, engine
+
 
 app = FastAPI()
 
@@ -26,7 +26,7 @@ def create_database():
     SQLModel.metadata.create_all(engine)
 
 
-def is_exchange_rate_on_date_exist(date_: datetime.date) -> Sequence[CurrencyRate]:
+def is_exchange_rate_on_date_exist(date_: date) -> Sequence[CurrencyRate]:
     with Session(engine) as session:
         return session.exec(select(CurrencyRate).where(CurrencyRate.date == date_)).all()
 
