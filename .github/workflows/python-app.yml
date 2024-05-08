@@ -29,4 +29,4 @@ jobs:
       - name: Lint
         run: pdm lint_check
       - name: Test with pytest
-        run: pytest
+        run: pdm run pytest -s
