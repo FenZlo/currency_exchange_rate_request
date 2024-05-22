@@ -10,12 +10,11 @@ permissions:
   contents: read
 
 jobs:
-  build:
-
+  check:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
+
       - name: Setup PDM
         uses: pdm-project/setup-pdm@v4
         with:
@@ -23,13 +22,20 @@ jobs:
           cache: true
           cache-dependency-path: '**/pdm.lock'
         # You are now able to use PDM in your workflow
+
       - name: Install dependencies
         run: pdm install
+
       - name: Lint
         run: pdm lint_check
+
       - name: Test with pytest
         run: pdm run pytest -s
 
+  build:
+    needs: [check]
+    runs-on: ubuntu-latest
+    steps:
         # New steps for Docker build and push
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
