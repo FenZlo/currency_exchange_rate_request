@@ -10,10 +10,8 @@ permissions:
   contents: read
 
 jobs:
-  build:
-
+  check:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
       - name: Setup PDM
@@ -30,6 +28,9 @@ jobs:
       - name: Test with pytest
         run: pdm run pytest -s
 
+  build:
+    runs-on: ubuntu-latest
+    steps:
         # New steps for Docker build and push
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
